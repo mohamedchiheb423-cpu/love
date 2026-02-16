@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤍😗</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Tahoma", sans-serif;
+  text-align:center;
+  background:linear-gradient(to bottom,#8ec5ff,#dff2ff);
+  overflow-x:hidden;
+}
+
+/* خلفية رومانسية */
+.floating{
+  position:fixed;
+  top:-40px;
+  font-size:22px;
+  animation:fall linear infinite;
+  z-index:0;
+  opacity:0.7;
+}
+
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+
+.container{
+  position:relative;
+  z-index:2;
+  padding:60px 20px;
+}
+
+/* صندوق الجملة */
+.title-box{
+  position:relative;
+  background:white;
+  padding:25px 35px;
+  border-radius:25px;
+  display:inline-block;
+  box-shadow:0 15px 35px rgba(0,0,0,0.12);
+  font-size:21px;
+  margin-bottom:35px;
+}
+
+/* الدب */
+.teddy{
+  position:absolute;
+  top:-55px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:48px;
+}
+
+/* الأزرار */
+button{
+  padding:13px 35px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  margin:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#yesBtn{
+  background:linear-gradient(45deg,#ff4d6d,#ff758f);
+  color:white;
+  box-shadow:0 8px 20px rgba(255,77,109,0.4);
+}
+
+#yesBtn:hover{
+  transform:scale(1.08);
+}
+
+#noBtn{
+  background:white;
+  color:#555;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* الفيديو */
+.video-section{
+  display:none;
+  margin-top:40px;
+}
+
+video{
+  width:90%;
+  max-width:520px;
+  border-radius:20px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* قالب الرسالة */
+.message-box{
+  background:white;
+  margin:30px auto;
+  padding:35px;
+  border-radius:30px;
+  max-width:650px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  line-height:2;
+  font-size:19px;
+  display:none;
+  position:relative;
+}
+
+/* لمعة خفيفة */
+.message-box::after{
+  content:"✨";
+  position:absolute;
+  top:-15px;
+  right:20px;
+  font-size:24px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const symbols=["🤍","🌸","🌹","💙","✨","💞"];
+for(let i=0;i<22;i++){
+  let span=document.createElement("span");
+  span.className="floating";
+  span.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
+  span.style.left=Math.random()*100+"vw";
+  span.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(span);
+}
+</script>
+
+<div class="container">
+
+<div class="title-box">
+<div class="teddy">🧸</div>
+ممكن تسامحيني يلي عندها اجمل والطف واحلى عينين فلكون 🤍😗
+</div>
+
+<br>
+
+<button id="yesBtn">EVET 😔🦢</button>
+<button id="noBtn">HAYIR 😔☝️</button>
+
+<div class="video-section" id="videoSection">
+
+<br>
+
+<video id="vid" controls>
+<source src="SnapTik_App_7531446202089360647.mp4" type="video/mp4">
+</video>
+
+<div class="message-box" id="loveText">
+شيمتيي😔☝️ ياتؤام روحي انتي اغلى حاجة نشكر ربي ونعاود عخاطر لقاني بيك🤍 شتيتك ومزلت نشتيك وحنبقا مغروم بيك لاخر نفس فيا 😔مش عارف وش نقول بصح مكاش حاجة فدنيا تفرح قلبي قدك نتي نحب نشوفك ديما فرحانة اضحكي يلي عندها اجمل ضحكة فدنيا والطف واحن قلب تؤبريني نشاله🦢🌺
+</div>
+
+</div>
+
+</div>
+
+<script>
+// زر HAYIR الجديد مع ارتجاف قبل القفز
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("click", () => {
+  // ارتجاف صغير قبل الهروب
+  noBtn.style.transition = "transform 0.05s";
+  noBtn.style.transform = "translate(-5px,0px)";
+  setTimeout(() => { noBtn.style.transform = "translate(5px,0px)"; }, 50);
+  setTimeout(() => { noBtn.style.transform = "translate(0px,0px)"; }, 100);
+
+  // بعد 120ms تتحرك للمكان الجديد
+  setTimeout(() => {
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.transition = "left 0.3s ease, top 0.3s ease";
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top  = y + "px";
+  }, 120);
+});
+
+// زر EVET كما هو
+document.getElementById("yesBtn").addEventListener("click",function(){
+document.getElementById("videoSection").style.display="block";
+document.getElementById("loveText").style.display="block";
+document.getElementById("vid").play();
+});
+</script>
+
+</body>
+</html>
