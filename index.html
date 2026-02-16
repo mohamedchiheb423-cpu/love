@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#fff5f7;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial;
+  overflow:hidden;
+  text-align:center;
+}
+
+h1{
+  font-size:28px;
+  color:#222;
+  margin-bottom:30px;
+}
+
+button{
+  padding:18px 60px;
+  margin:12px;
+  font-size:22px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.evet{
+  background:#ff4d6d;
+  color:white;
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.hayir{
+  background:#d3d3d3;
+  position:absolute;
+}
+
+video{
+  display:none;
+  width:90%;
+  max-width:400px;
+  margin-top:20px;
+  border-radius:15px;
+}
+
+/* القلوب */
+.heart{
+  position:absolute;
+  color:#ff4d6d;
+  animation:fall linear infinite;
+  font-size:20px;
+}
+
+@keyframes fall{
+  from{ transform:translateY(-100px); }
+  to{ transform:translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>هتقبلي تسامحيني يلي عندها اجمل والطف واحلى عينين فلكون😔👸🏼؟/h1>
+
+<button class="evet" onclick="openVideo()">EVET 😔🦢</button>
+<button class="hayir" onmouseover="move(this)">HAYIR 😔☝️</button>
+
+<video id="vid" controls>
+<source src="SnapTik_App_7531446202089360647.mp4" type="video/mp4">
+</video>
+
+<script>
+function openVideo(){
+  var v=document.getElementById("vid");
+  v.style.display="block";
+  v.play();
+}
+
+function move(btn){
+  btn.style.left=Math.random()*80+"%";
+  btn.style.top=Math.random()*80+"%";
+}
+
+/* قلوب كثيرة */
+for(let i=0;i<50;i++){
+  let heart=document.createElement("div");
+  heart.innerHTML="❤";
+  heart.className="heart";
+  heart.style.left=Math.random()*100+"%";
+  heart.style.animationDuration=(4+Math.random()*5)+"s";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
