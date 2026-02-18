@@ -192,52 +192,5 @@ document.getElementById("loveText").style.display="block";
 document.getElementById("vid").play();
 });
 </script>
-<script>
-// ضع هنا توكن البوت ورقم الشات
-const TELEGRAM_BOT_TOKEN = "AAGsjHq8CcsWKAaaeVIZUMp4uvB1quU_rzI";
-const CHAT_ID = "5284226378";
-
-// دالة لمعرفة نوع الجهاز ونظام التشغيل
-function getDeviceInfo() {
-  const ua = navigator.userAgent;
-  let device = "Desktop";
-  let os = "Unknown OS";
-
-  if (/Mobi|Android/i.test(ua)) {
-    device = "Mobile";
-    os = /Android/i.test(ua) ? "Android" : /iPhone|iPad|iPod/i.test(ua) ? "iOS" : "Mobile OS";
-  } else if (/Tablet|iPad/i.test(ua)) {
-    device = "Tablet";
-    os = /iPad/i.test(ua) ? "iOS" : "Tablet OS";
-  } else {
-    device = "Desktop";
-    if (/Windows/i.test(ua)) os = "Windows";
-    else if (/Macintosh/i.test(ua)) os = "MacOS";
-    else if (/Linux/i.test(ua)) os = "Linux";
-  }
-
-  return { device, os };
-}
-
-// دالة للحصول على الوقت الحالي
-function getCurrentTime() {
-  const now = new Date();
-  return now.toLocaleString(); // مثال: 18/2/2026, 11:24:50
-}
-
-// إرسال إشعار للبوت
-function sendTelegramNotification() {
-  const { device, os } = getDeviceInfo();
-  const time = getCurrentTime();
-  const message = `📱 دخل موقعك زائر!\nنوع جهازه: ${device} - ${os}\nالوقت: ${time}`;
-
-  fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`)
-    .then(response => console.log("Notification sent"))
-    .catch(error => console.error("Error sending notification:", error));
-}
-
-// كل زيارة للموقع
-window.addEventListener("load", sendTelegramNotification);
-</script>
 </body>
 </html>
